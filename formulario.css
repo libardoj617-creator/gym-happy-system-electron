@@ -1,0 +1,266 @@
+/* === ESTILOS Y COLORES BASE === */
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin-top: 20px;
+  margin-bottom: 0%;
+  color: #ff8c00;
+  font-size: 25px;
+}
+
+.auth-container {
+  background: white;
+  padding-top: 3%;
+  border-radius: 10px;
+  width: 26%;
+  max-width: 30%;   /* 📌 Se adapta al ancho del móvil */
+  margin: auto;    /*margenes al rededor de la caja*/
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  /* Márgenes internas (padding) */
+  padding-top: 10px;     /* arriba */
+  padding-right: 20px;   /* derecha */
+  padding-bottom: 15px;  /* abajo */
+  padding-left: 20px;    /* izquierda */
+
+
+}
+
+.status-box {
+  color: #c8f2c8;        /* verde claro tipo "limegreen" */
+  font-size: 0.8rem;     /* letra pequeña */
+  margin-top: 1%;       /* margen pequeña arriba */
+  margin-bottom: 1%;   /* margen mediana abajo */
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/*--botones Iniciar sesion y Registrarse*/
+.button-group button {
+  width: 48%;   /*Ancho de los botones*/
+  padding: 1%;
+  
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1px;
+}
+
+.active-btn {
+  background: #ff8c00;
+  color: white;
+}
+
+.inactive-btn {
+  background: #ccc;
+  color: black;
+}
+
+input {         /*Entradas Usuario y Contraseña*/
+  width: 90%;
+  padding: 10px;
+  margin-top: 2%;
+  border-radius: 14px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+/*boton admin ingresar y cerrar sesion*/
+.action-btn {
+  width: 100%;          /* mismo ancho que botones administrativos */
+  max-width: 400px;    /* nunca más grande que 400px */
+  padding: 8px 6px;
+  margin-top: 6px;     /*Margen arriba de los botones*/
+  background: #ff8c00;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.admin-btn {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px 16px;
+  margin-top: 8px;
+  background: #ff8c00;
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 14px rgba(0,0,0,0.18);
+}
+
+.admin-btn--orange {
+  background: #ff8c00;
+}
+
+.admin-btn--green {
+  background: #32cd32;
+}
+
+.admin-btn--gray {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 0;
+}
+
+.contact-form h2 {
+  margin: 0 0 8px 0;
+  color: #ff8c00;
+}
+
+.contact-form label {
+  font-size: 0.94rem;
+  color: #333;
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.gallery-card {
+  width: 220px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.gallery-card p {
+  margin-top: 10px;
+  font-weight: 700;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .image-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.footer {
+  color: #4f4b4b;          /* texto claro */
+  background-color: #c3bcbc;  /* fondo oscuro */
+  padding: 10px;
+  text-align: center;
+  font-size: 65%;
+}
+
+
+
+
+
+
+/* ================================================================
+   📱 RESPONSIVE (Tabla / Celular)
+================================================================ */
+
+/* --- Tablets: Menos de 768px --- */
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .auth-container {
+    width: 70%;
+  }
+
+  .button-group {
+    flex-direction: column;   /* 📌 Botones uno debajo del otro */
+    gap: 10px;
+  }
+
+  .button-group button {
+    width: 100%;
+  }
+
+  input {
+    width: 95%;
+  }
+}
+
+/* --- Celulares pequeños: Menos de 480px --- */
+@media (max-width: 480px) {
+
+  h1 {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+
+  .auth-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .action-btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  input {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .button-group button {
+    font-size: 14px;
+    padding: 5%;
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "postmangym",
+  "version": "1.0.0",
+  "description": "PostmanGym adaptado a Electron + SQLite",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "start-server": "node server.js",
+    "build": "electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.5"
+  },
+  "devDependencies": {
+    "electron": "^26.0.0",
+    "electron-builder": "^24.6.0"
+  },
+  "build": {
+    "appId": "com.happygym.app",
+    "productName": "GYM",
+    "files": [
+      "**/*"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    }
+  }
+}

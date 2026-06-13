@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Formulario</title>
+
+<!-- Estilos -->
+<link rel="stylesheet" href="header.css" />
+<link rel="stylesheet" href="formulario.css" />
+</head>
+
+<body>
+
+<!-- CONTENEDOR DEL HEADER -->
+<div id="header-container"></div>
+
+
+
+<h1 id="page-title">Servicio de Autenticación</h1>
+<!--Caja blanca-->
+<div class="auth-container">
+<!-- TITULO DE USUARIO -->
+<div id="user-title" class="user-title" style="display: none; color: #333; font-weight: 700; margin-bottom: 10px;"></div>
+<!-- ESTADO DEL SERVIDOR ARRIBA DEL FORMULARIO -->
+<div id="status" class="status-box"></div>
+
+<div id="main-auth-content">
+
+
+
+    <div class="button-group">
+        <button class="active-btn" id="btnLogin">Iniciar sesión</button>
+        <button class="inactive-btn" id="btnRegister">Registrar Usuario</button>
+    </div>
+
+    <input type="text" id="usuario" placeholder="Usuario" />
+    <input type="password" id="password" placeholder="Contraseña" />
+
+    <!-- CAMPOS ADMINISTRATIVOS (OCULTOS POR DEFECTO) -->
+    <div id="admin-fields" style="display: none;">
+        <label for="rol">Rol:</label>
+        <select id="rol">
+            <option value="cliente">Cliente</option>
+            <option value="admin">Administrador</option>
+        </select>
+
+        <label for="membresia">Días restantes:</label>
+        <select id="membresia">
+            <option value="0">0 días</option>
+            <option value="30">30 días</option>
+            <option value="60">60 días</option>
+            <option value="90">90 días</option>
+        </select>
+    </div>
+
+    <button class="action-btn" id="btnEnviar">Ingresar</button>
+    <button class="action-btn" id="btnLogout" style="display: none; background:#555;">Cerrar sesión</button>
+
+    <div id="client-info" style="display:none; margin-top: 16px; text-align:left;">
+      <p id="membership-label" style="margin: 0 0 8px 0; font-weight: 600;"></p>
+      <p id="tiempo-label" style="margin: 0 0 8px 0;"></p>
+      <p id="status-membership-label" style="margin: 0 0 12px 0; font-weight: 700;"></p>
+      <button class="action-btn" id="btnPago" style="display: inline-block;">Pago</button>
+    </div>
+
+    <!-- NUEVOS BOTONES -->
+    <button class="action-btn admin-btn admin-btn--gray" id="btnBorrar" style="display: none;">Borrar Cliente</button>
+    <button class="action-btn admin-btn admin-btn--orange" id="btnLista" style="display: none;">Lista de Clientes</button>
+    <button class="action-btn admin-btn admin-btn--orange" id="btnActivarMembresia" style="display: none;">Editar Membresía</button>
+
+    <div id="activar-membresia-panel" style="display:none; margin-top: 12px; text-align:left;">
+      <input type="text" id="activar-usuario" placeholder="Nombre del cliente" style="width: 90%; padding: 10px; border-radius: 14px; border: 1px solid #ccc; margin-bottom: 8px;" />
+      <select id="activar-dias" style="width: 94%; padding: 10px; border-radius: 14px; border: 1px solid #ccc; margin-bottom: 8px;">
+        <option value="0">0 días</option>
+        <option value="30">30 días</option>
+        <option value="60">60 días</option>
+        <option value="90">90 días</option>
+      </select>
+      <button class="action-btn" id="btnConfirmarActivar" style="width: 94%;">Confirmar</button>
+    </div>
+
+    <div id="planes-gallery-panel" class="image-gallery" style="display:none; margin-top: 20px;">
+      <div class="gallery-card">
+        <img src="src/assets/Perdida-de-Grasa.png" alt="Perdida de grasa" />
+        <p>Perdida de grasa</p>
+      </div>
+      <div class="gallery-card">
+        <img src="src/assets/personalizado.png" alt="Personalizado" />
+        <p>Personalizado</p>
+      </div>
+      <div class="gallery-card">
+        <img src="src/assets/full-body.png" alt="Full body" />
+        <p>Full body</p>
+      </div>
+    </div>
+
+    <p id="mensaje"></p>
+    <div id="clientes-listado" style="display:none; margin-top: 14px; text-align:left;"></div>
+
+    <div id="planes-membresia" style="display:none; margin-top: 16px; text-align:left; width: 100%;">
+      <h2 style="margin-bottom: 12px; color: #ff7f00;">Membresías</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead style="background: #ff8c00; color: white;">
+          <tr>
+            <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Tipo</th>
+            <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Duración</th>
+            <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Precio</th>
+            <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: #fff;">
+            <td style="padding: 10px; border: 1px solid #ddd;">Día</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">1 día</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">$10.000</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">Activo</td>
+          </tr>
+          <tr style="background: #f9f9f9;">
+            <td style="padding: 10px; border: 1px solid #ddd;">Semana</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">7 días</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">$40.000</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">Activo</td>
+          </tr>
+          <tr style="background: #fff;">
+            <td style="padding: 10px; border: 1px solid #ddd;">Mes</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">30 días</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">$100.000</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">Activo</td>
+          </tr>
+          <tr style="background: #f9f9f9;">
+            <td style="padding: 10px; border: 1px solid #ddd;">60 días</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">60 días</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">$180.000</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">Activo</td>
+          </tr>
+          <tr style="background: #fff;">
+            <td style="padding: 10px; border: 1px solid #ddd;">90 días</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">90 días</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">$250.000</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">Activo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div id="contact-form" class="contact-form" style="display: none; text-align: left;">
+    <h2>Contáctanos</h2>
+    <label for="contact-name">Nombre</label>
+    <input type="text" id="contact-name" placeholder="Nombre" />
+    <label for="contact-email">Correo</label>
+    <input type="email" id="contact-email" placeholder="Correo" />
+    <label for="contact-message">Mensaje</label>
+    <textarea id="contact-message" rows="5" placeholder="Mensaje"></textarea>
+    <button class="action-btn" id="btnContactSend">Enviar</button>
+  </div>
+</div>
+
+<!---se crea una clase footer para controlar estilos desde css-->
+<footer class="footer">© 2025 Created by Happy System</footer>
+
+<!-- CARGAR HEADER -->
+<script>
+function initMembershipPanel() {
+  const nav = document.getElementById("nav-membresias");
+  const panel = document.getElementById("planes-membresia");
+  if (!nav || !panel) return;
+
+  const togglePanel = () => {
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+  };
+
+  nav.addEventListener("click", (event) => {
+    const isFormularioPage = window.location.pathname.endsWith("formulario.html") || window.location.pathname.endsWith("/formulario");
+    if (isFormularioPage) {
+      event.preventDefault();
+      togglePanel();
+    }
+  });
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("showMembresias") === "1") {
+    panel.style.display = "block";
+    window.history.replaceState({}, "", window.location.pathname);
+  }
+}
+
+function initPlansPanel() {
+  const navPlanes = document.getElementById("nav-planes");
+  const panel = document.getElementById("planes-gallery-panel");
+  if (!navPlanes || !panel) return;
+
+  navPlanes.addEventListener("click", (event) => {
+    event.preventDefault();
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+    if (panel.style.display === "block") {
+      panel.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+}
+
+fetch("header.html")
+  .then(res => res.text())
+  .then(html => {
+      document.getElementById("header-container").innerHTML = html;
+      initMembershipPanel();
+      initPlansPanel();
+  })
+  .catch(err => console.log("Error cargando header:", err));
+</script>
+
+<!-- ESTADO DEL BACKEND -->
+<script>
+async function checkBackend() {
+  try {
+    const res = await fetch("/api/health");
+    const box = document.getElementById("status");
+
+    if (res.ok) {
+      box.textContent = "🏋️Servidor conectado ✅";
+      box.style.color = "#28a745";
+    } else {
+      box.textContent = "Servidor sin conexión";
+      box.style.color = "#888";
+    }
+  } catch (error) {
+    const box = document.getElementById("status");
+    box.textContent = "Servidor sin conexión";
+    box.style.color = "#888";
+  }
+}
+
+checkBackend();
+setInterval(checkBackend, 5000);
+</script>
+
+<!-- TU LÓGICA -->
+<script type="module" src="formulario.js"></script>
+
+<!-- ESTILOS DEL STATUS -->
+<style>
+
+</style>
+
+</body>
+</html>

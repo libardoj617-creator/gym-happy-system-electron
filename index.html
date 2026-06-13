@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio</title>
+
+    <!-- Estilos generales -->
+    <link rel="stylesheet" href="index.css" />
+
+    <!-- Estilos del Header -->
+    <link rel="stylesheet" href="header.css" />
+</head>
+<body>
+
+    <!-- Insertar el Header aquí -->
+    <div id="header-container"></div>
+
+    <h1>Bienvenido</h1>
+    <a href="formulario.html" class="btn-orange">Ingresar</a>
+
+    <div id="planes-gallery" class="image-gallery">
+      <div class="gallery-card">
+        <img src="src/assets/Perdida-de-Grasa.png" alt="Perdida de grasa" />
+        <p>Tonificar</p>
+      </div>
+      <div class="gallery-card">
+        <img src="src/assets/personalizado.png" alt="Personalizado" />
+        <p>Personalizado</p>
+      </div>
+      <div class="gallery-card">
+        <img src="src/assets/full-body.png" alt="Full body" />
+        <p>Full body</p>
+      </div>
+    </div>
+
+    <!-- Script para cargar header.html dinámicamente -->
+    <script>
+      function initPlansWidget() {
+        const nav = document.getElementById("nav-planes");
+        const gallery = document.getElementById("planes-gallery");
+        if (!nav || !gallery) return;
+
+        nav.addEventListener("click", (event) => {
+          event.preventDefault();
+          gallery.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+
+      fetch("header.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("header-container").innerHTML = html;
+          initPlansWidget();
+        })
+        .catch(err => console.log("Error al cargar header:", err));
+    </script>
+</body>
+</html>

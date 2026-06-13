@@ -1,0 +1,15 @@
+#Archivos sencibles
+#Dependencias
+node_modules/
+#Logs
+npm-debug.Log
+yarn-debug.Log
+yarn-error.Log
+#Sistema
+.DS_Store
+dist/
+win-unpacked/
+release/
+*.exe
+builder-debug.yml
+builder-effective-config.yaml

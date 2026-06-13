@@ -1,0 +1,78 @@
+body {
+font-family: Arial;
+background: #fdf6f0;
+text-align: center;
+padding: 40px;
+}
+
+
+h1 {
+color: #ff8c00;
+margin-bottom: 0;
+}
+
+/*boton ingresar del index*/
+.btn-orange {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 28px;
+  background: #ff8c00;
+  color: #ffffff;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 6px 18px rgba(255, 140, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-orange:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(255, 140, 0, 0.35);
+}
+
+a {
+font-size: 18px;
+color: #ff8c00;
+text-decoration: none;
+font-weight: bold;
+}
+
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.gallery-card {
+  width: 220px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.gallery-card p {
+  margin-top: 10px;
+  font-weight: 700;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .image-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+

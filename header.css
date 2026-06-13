@@ -1,0 +1,215 @@
+/* -----------------------------------------
+   CABECERA ESTILO GYM (Happy System)
+------------------------------------------ */
+
+/* ============================
+   CONTENEDOR GENERAL
+============================ */
+
+.header-container {
+  background: #ff8c00;
+  padding: 1%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra absolutamente todo */
+}
+
+
+/* ============================
+   LOGO + TÍTULOS
+============================ */
+.header-top { /* Logo GYM*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1px;
+}
+
+.header-logo {  /*borde del logo*/
+  width: 25%;
+  height: auto;
+  border-radius: 12px;
+  background: #fff;
+  margin-bottom: 1px;
+}
+
+.header-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+  
+}
+
+.subtitle {   /*Subtitulo by Happy System*/
+  font-size: 10px;
+  font-weight: 600;
+  color: #625f5f;
+  opacity: 0.9;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 1%;
+}
+
+
+/* ============================
+   CAJA BLANCA
+============================ */
+.header-box {
+  background: #fff;
+  border-radius: 20px;
+  
+  padding: 1%;
+  width: 30%;
+  max-width: 350px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+/* ============================
+   LISTA DE BOTONES
+============================ */
+.header-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column; /* CENTRA la lista */
+  gap: 5px;
+}
+
+.header-nav li {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* CENTRA el botón */
+}
+
+
+/* ============================
+   BOTONES Inicio Servicios Planes Contacto
+============================ */
+.header-nav a {
+  background: #ff8c00;
+  color: #fff;
+  padding: 10% 2px;
+
+  width: 160px;
+  text-align: center;        /* Centra el texto */
+  display: flex;             /* Asegura alineación interna */
+  justify-content: center;   /* Centra contenido horizontal */
+  align-items: center;       /* Centra vertical */
+  
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 1%;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+
+  box-shadow: 0 5px 10px rgba(0,0,0,0.12);
+  transition: 0.2s ease-in-out;
+   width: 100%;        /* 🔽 ocupa todo el ancho de la caja */
+  margin: 23;          /* 🔽 elimina márgenes laterales */
+
+
+}
+
+/* Hover */
+.header-nav a:hover {
+  background: #ff8c00;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 14px rgba(0,0,0,0.18);
+}
+
+
+/* ============================
+   RESPONSIVE
+============================ */
+/* ============================
+   BOTONES RESPONSIVE CORREGIDOS
+   ============================ */
+
+/* Pantallas grandes (≥ 1024px) */
+@media (min-width: 1024px) {
+  .header-logo {
+    width: min(180px, 25%);
+  }
+
+  .header-box {
+    width: min(30%, 380px);
+  }
+
+  .header-nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .header-nav li {
+    width: auto;
+  }
+
+  .header-nav a {
+    width: auto;
+    min-width: 150px;
+    font-size: 0.95rem;
+    padding: 10px 14px;
+    margin: 0;
+  }
+}
+
+/* Tablets grandes (≤ 1024px) */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .header-nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .header-nav li {
+    width: auto;
+  }
+
+  .header-nav a {
+    width: auto;
+    min-width: 140px;
+    font-size: 15px;
+    padding: 10px 12px;
+  }
+}
+
+/* Tablets medianas (≤ 768px) */
+@media (max-width: 768px) {
+  .header-nav a {
+    width: 140px;
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+/* Celulares (≤ 520px) */
+@media (max-width: 520px) {
+  .header-nav a {
+    width: 50%;
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+/* Celulares pequeños (≤ 480px) */
+@media (max-width: 480px) {
+  .header-nav a {
+    width: 40%;
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+}
