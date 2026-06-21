@@ -17,6 +17,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 let pool;
+let databaseReady = false;
 
 // Configuración de conexión MySQL desde .env
 const DB_CONFIG = {
@@ -57,14 +58,26 @@ async function initializeDatabase() {
     );
 
     connection.release();
+    databaseReady = true;
     console.log('✓ Base de datos inicializada correctamente');
   } catch (err) {
+    databaseReady = false;
+    pool = null;
     console.error('Error inicializando BD:', err);
     throw err;
   }
 }
 
+function assertDatabaseReady() {
+  if (!databaseReady || !pool) {
+    const error = new Error('Base de datos no disponible');
+    error.code = 'DB_NOT_READY';
+    throw error;
+  }
+}
+
 async function runQuery(sql, params = []) {
+  assertDatabaseReady();
   const connection = await pool.getConnection();
   try {
     const [rows] = await connection.query(sql, params);
@@ -75,6 +88,7 @@ async function runQuery(sql, params = []) {
 }
 
 async function runExecute(sql, params = []) {
+  assertDatabaseReady();
   const connection = await pool.getConnection();
   try {
     const [result] = await connection.query(sql, params);
@@ -281,24 +295,30 @@ app.get('/api/health', (req, res) => {
 });
 
 async function startServer() {
-  try {
-    await initializeDatabase();
-    const server = app.listen(PORT, () => {
+  const server = await new Promise((resolve, reject) => {
+    const instance = app.listen(PORT, () => {
       console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+      resolve(instance);
     });
-    server.on('error', (error) => {
+
+    instance.on('error', (error) => {
       console.error('Error en servidor:', error);
-      process.exit(1);
+      reject(error);
     });
-    return server;
-  } catch (error) {
-    console.error('Error iniciando servidor:', error);
-    process.exit(1);
-  }
+  });
+
+  initializeDatabase().catch((error) => {
+    console.error('La interfaz seguirá abierta aunque la base no responda:', error);
+  });
+
+  return server;
 }
 
 if (require.main === module) {
-  startServer();
+  startServer().catch((error) => {
+    console.error('No se pudo iniciar el servidor:', error);
+    process.exit(1);
+  });
 }
 
 module.exports = { startServer };
